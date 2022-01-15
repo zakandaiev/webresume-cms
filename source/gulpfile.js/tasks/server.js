@@ -1,6 +1,6 @@
 const server = () => {
 	$.browserSync.init({
-		proxy: "zak",
+		proxy: "webresume.local",
 		/*server: {
 			baseDir: $.path.root
 		},*/
