@@ -1,0 +1,19 @@
+@mixin font($fname, $fstyle, $fweight, $furl) {
+	@font-face {
+		font-family: $fname;
+		font-style: $fstyle;
+		font-weight: $fweight;
+		font-stretch: 100%;
+		font-display: swap;
+		src:
+			local(""),
+			url($furl + ".woff2") format("woff2"),
+			url($furl + ".ttf") format("truetype");
+	}
+}
+
+@include font("Source Sans Pro", normal, 400, "../fonts/SourceSansPro-Regular");
+@include font("Source Sans Pro", normal, 600, "../fonts/SourceSansPro-SemiBold");
+
+@include font("Source Sans Pro", italic, 400, "../fonts/SourceSansPro-Italic");
+@include font("Source Sans Pro", italic, 600, "../fonts/SourceSansPro-SemiBoldItalic");

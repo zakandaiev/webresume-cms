@@ -1,0 +1,77 @@
+/* ==========  Text  ========== */
+.text-left {
+	text-align: left;
+}
+.text-center {
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.font-normal {
+	font-weight: $font-normal;
+}
+.font-bold {
+	font-weight: $font-bold;
+}
+.text-upper {
+	text-transform: uppercase;
+}
+.text-lower {
+	text-transform: lowercase;
+}
+.text-capitalize {
+	text-transform: capitalize;
+}
+
+/* ==========  Decorations  ========== */
+.bordered {
+	text-decoration: none;
+	border-bottom: 1px dotted $color-primary;
+	transition: $transition;
+	&:hover {
+		text-decoration: none;
+		border-bottom-color: transparent;
+	}
+}
+.border-radius {
+	border-radius: $brs;
+}
+
+/* ==========  Tables  ========== */
+.table-fixed {
+	table-layout: fixed;
+}
+
+/* ==========  Visibility  ========== */
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+
+/* ==========  Primary colors  ========== */
+.color-primary {
+	color: $color-primary;
+}
+.background-primary {
+	background-color: $color-primary;
+}
+
+/* ==========  Cursors  ========== */
+.cursor-pointer {
+	cursor: pointer;
+}
+.cursor-default {
+	cursor: default;
+}
+
+/* ==========  Half width  ========== */
+.half-width {
+	width: calc(50% - 0.5em);
+	&.left {
+		float: left;
+	}
+	&.right {
+		float: right;
+	}
+}

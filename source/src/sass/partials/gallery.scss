@@ -1,0 +1,94 @@
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -1em;
+	&__item {
+		display: block;
+		width: calc(25% - 2em);
+		margin: 1em;
+		height: 10em;
+		background-color: $color-border;
+		border-radius: $brs;
+		overflow: hidden;
+		text-decoration: none;
+		border: none;
+		cursor: pointer;
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 3s;
+		}
+		&:hover img {
+			transform: scale(1.1);
+		}
+		&:first-child {
+			width: 100%;
+			height: 24em;
+		}
+		&.long img {
+			height: auto;
+		}
+		&.long:first-child:hover img {
+			transform: translateY(calc(-100% + 24em));
+		}
+		&.long:hover img {
+			transform: translateY(calc(-100% + 10em));
+		}
+		position: relative;
+		&::before {
+			content: "";
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+			background-color: transparent;
+			transition: $transition;
+		}
+		&:hover::before {
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+		&::after {
+			content: "View";
+
+			display: inline-block;
+			text-align: center;
+			vertical-align: middle;
+			border: 2px solid rgba(255, 255, 255, 0.5);
+			padding: 1em 2em;
+			font-size: 0.9em;
+			line-height: 1;
+			border-radius: $brs;
+			color: #fff;
+
+			position: absolute;
+			z-index: 2;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: $transition;
+			opacity: 0;
+		}
+		&:hover::after {
+			opacity: 1;
+		}
+	}
+
+	@media (max-width: 768px) {
+		&__item {
+			width: calc(33% - 2em);
+		}
+	}
+}
+
+.fancybox__image {
+	border-radius: $brs;
+}
+.fancybox__thumbs .carousel__slide .fancybox__thumb::after {
+	border-color: $color-primary;
+}

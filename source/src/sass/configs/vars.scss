@@ -1,0 +1,49 @@
+/* ==========  Font  ========== */
+$font: "Source Sans Pro", sans-serif;
+
+/* ==========  Font Weight  ========== */
+$font-normal: 400;
+$font-bold: 600;
+
+/* ==========  Colors  ========== */
+$color-primary: #49bf9d;
+$color-success: #51a351;
+$color-info: #2f96b4;
+$color-warning: #f89406;
+$color-error: #bf4949;
+$color-body: #fff;
+$color-heading: #787878;
+$color-text: #a2a2a2;
+$color-text-light: #c4c4c4;
+$color-link: $color-primary;
+$color-border: #f7f7f7;
+$color-dark: #1f1815;
+
+/* ==========  Templates  ========== */
+$border: 2px solid;
+$border-2x: 4px solid;
+$border-3x: 6px solid;
+
+$brs: 0.4em;
+
+$transition: all .3s;
+
+%reset-btn {
+	outline: none;
+	border: none;
+	background: none;
+	box-shadow: none;
+	user-select: none;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	font: inherit;
+}
+
+@function translateByCircleCorner($diameter, $unit, $degrees) {
+	$radius: math.div($diameter, 2);
+	$posX: $radius * math.cos($degrees - 90deg);
+	$posY: $radius * math.sin($degrees - 90deg);
+	$result: translateX(#{$posX}#{$unit}) translateY(#{$posY}#{$unit});
+	@return $result;
+}
