@@ -23,7 +23,7 @@ WebResume CMS is used to easily create your resume website.
 * Content live editing
 * All CMS features
 * SEO management
-* Hybrid admin system (/login & /logout)
+* Hybrid admin system (use `/login` path to login)
 * and many more...
 
 ## Web environment requirements
