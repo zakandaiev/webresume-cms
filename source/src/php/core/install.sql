@@ -91,4 +91,5 @@ INSERT INTO `%prefix%_settings` (`name`, `value`) VALUES
 ('section_contact', null);
 
 INSERT INTO `%prefix%_pages` (`title`, `url`, `template`) VALUES
-('%site_name%', 'home', 'home.php');
+('%site_name%', 'home', 'home.php'),
+('Portfolio - %site_name%', 'portfolio', 'portfolio_page.php');
