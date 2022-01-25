@@ -144,23 +144,25 @@ function resizeImage($source_file, $folder = "small", $width = 400) {
 }
 function printFormFiles($files) {
 	if(empty($files)) {
-		return '<div class="form-files"></div>';
+		return '<div class="form-files sortable"></div>';
 	}
 	if(!is_array($files) && $files[0] === "[") {
 		$files_array = json_decode($files, true);
 	} else {
 		$files_array = array($files);
 	}
-	$files_output = '<div class="form-files">';
+	$files_output = '<div class="form-files sortable">';
 	foreach($files_array as $file) {
 		$file_ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+		$files_output .= '<div class="form-files__item sortable__handle" data-src="'.$file.'">';
 		if($file_ext === "jpg" || $file_ext === "jpeg" || $file_ext === "png" || $file_ext === "gif" || $file_ext === "webp") {
-			$files_output .= '<div class="form-files__item" data-src="'.$file.'"><img src="/'.getSmallUploadPath($file).'"></div>';
+			$files_output .= '<img src="/'.getSmallUploadPath($file).'">';
 		} else if($file_ext === "pdf") {
-			$files_output .= '<div class="form-files__item" data-src="'.$file.'"><span>'.getSvg("img/icons/pdf.svg").'</span></div>';
+			$files_output .= '<span>'.getSvg("img/icons/pdf.svg").'</span>';
 		} else {
-			$files_output .= '<div class="form-files__item" data-src="'.$file.'"><span>'.getSvg("img/icons/document.svg").'</span></div>';
+			$files_output .= '<span>'.getSvg("img/icons/document.svg").'</span>';
 		}
+		$files_output .= '</div>';
 	}
 	$files_output .= '</div>';
 	return $files_output;

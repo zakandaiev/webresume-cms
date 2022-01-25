@@ -103,7 +103,8 @@ table {
 		font-weight: $font-bold;
 		color: $color-heading;
 	}
-	thead th {
+	thead th,
+	thead td {
 		border-bottom: 2px solid darken($color-border, 7%);
 	}
 	tbody th,
@@ -331,7 +332,6 @@ small {
 
 @import "partials/header";
 @import "partials/timeline";
-@import "partials/skills";
 @import "partials/portfolio";
 
 @import "partials/helpers";
