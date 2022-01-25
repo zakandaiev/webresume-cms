@@ -13,7 +13,7 @@
 	<meta name="keywords" content="<?=$current_page["seo_keywords"]?>">
 
 	<meta property="og:type" content="website">
-	<meta property="og:locale" content="uk_UA">
+	<meta property="og:locale" content="en_US">
 	<meta property="og:url" content="<?=$current_page["url"]?>">
 	<meta property="og:title" content="<?=$current_page["title"]?>">
 	<meta property="og:description" content="<?=$current_page["seo_description"]?>">
