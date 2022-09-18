@@ -72,7 +72,7 @@ if(file_exists($icons_dir)) {
 						<th></th>
 					</tr>
 				</thead>
-				<tbody class="sortable" data-name="person_socials" data-html="false">
+				<tbody class="sortable" data-name="person_socials">
 					<?php foreach($socials as $key => $social): ?>
 						<tr>
 							<td><a href="<?=$social['url']?>" class="color-primary bordered" target="_blank"><?=$social["url"]?></a></td>
