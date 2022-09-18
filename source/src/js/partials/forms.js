@@ -22,7 +22,7 @@ forms.forEach(form => {
 
 	form.addEventListener("submit", event => {
 		event.preventDefault();
-		
+
 		disableForm(form);
 
 		let formData = new FormData(form);
@@ -130,7 +130,7 @@ function formBehavior(form) {
 	function textToUrl(text) {
 		return text.toLowerCase().trim().replace(/\s+/g, " ").replace(/\s/g, "_").replace(/-/g, "_").replace(/\W/g, "").replace(/_/g, "-");
 	};
-	
+
 	controls.forEach(control => {
 		// on form init
 		if(control.getAttribute("data-form-behavior") === "visibility") {

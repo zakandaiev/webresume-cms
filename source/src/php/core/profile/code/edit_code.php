@@ -12,7 +12,7 @@ if(isset($_POST["code_id"]) && !empty($_POST["code_id"])) {
 }
 $title = null;
 if(isset($_POST["title"]) && !empty($_POST["title"])) {
-	$title = filter_var(trim($_POST["title"]), FILTER_SANITIZE_STRING);
+	$title = trim($_POST["title"]);
 }
 $portfolio_id = null;
 if(isset($_POST["portfolio_id"]) && !empty($_POST["portfolio_id"])) {
@@ -20,7 +20,7 @@ if(isset($_POST["portfolio_id"]) && !empty($_POST["portfolio_id"])) {
 }
 $extension = null;
 if(isset($_POST["extension"]) && !empty($_POST["extension"])) {
-	$extension = filter_var(trim($_POST["extension"]), FILTER_SANITIZE_STRING);
+	$extension = trim($_POST["extension"]);
 }
 $code = null;
 if(isset($_POST["code"]) && !empty($_POST["code"])) {
@@ -55,6 +55,6 @@ try {
 	$update_query->execute();
 	generateSitemapXml();
 	serverSendAnswer(1, "Code snipped added");
-} catch(PDOException $error) { 
+} catch(PDOException $error) {
 	serverSendAnswer(0, $error->getMessage());
 }

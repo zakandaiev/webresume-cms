@@ -38,6 +38,11 @@ $portfolio = $portfolio_query->fetchAll(PDO::FETCH_ASSOC);
 			<textarea name="seo_keywords" placeholder="SEO keywords" rows="1"></textarea>
 			<label>Date of publication</label>
 			<input type="datetime-local" name="cdate" value="<?=date('Y-m-d').'T'.date('H:i:s')?>">
+			<label>Pinned</label>
+			<label class="switcher">
+				<input type="checkbox" name="pinned">
+				<span class="slider round"></span>
+			</label>
 			<label>Enabled</label>
 			<label class="switcher">
 				<input type="checkbox" name="enabled" checked>
@@ -119,6 +124,7 @@ $portfolio = $portfolio_query->fetchAll(PDO::FETCH_ASSOC);
 					<tr>
 						<th>Title</th>
 						<th>Url</th>
+						<th>Pinned</th>
 						<th>Enabled</th>
 						<th></th>
 					</tr>
@@ -128,6 +134,13 @@ $portfolio = $portfolio_query->fetchAll(PDO::FETCH_ASSOC);
 						<tr>
 							<td><?=$portfolio["title"]?></td>
 							<td><a href="/portfolio/<?=$portfolio["url"]?>" class="color-primary bordered" target="_blank"><?=$portfolio["url"]?></a></td>
+							<td>
+								<?php if($portfolio["pinned"]): ?>
+									<?=getSvg("img/icons/plus.svg")?>
+								<?php else: ?>
+									<?=getSvg("img/icons/minus.svg")?>
+								<?php endif; ?>
+							</td>
 							<td>
 								<?php if($portfolio["enabled"]): ?>
 									<?=getSvg("img/icons/plus.svg")?>

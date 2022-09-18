@@ -8,11 +8,11 @@ if(!$user["is_logged"] || !is_csrf_valid()) {
 
 $login = null;
 if(isset($_POST["login"]) && !empty($_POST["login"])) {
-	$login = filter_var(trim($_POST["login"]), FILTER_SANITIZE_STRING);
+	$login = trim($_POST["login"]);
 }
 $email = null;
 if(isset($_POST["email"]) && !empty($_POST["email"])) {
-	$email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_STRING);
+	$email = trim($_POST["email"]);
 }
 
 validateLogin($login);
@@ -43,7 +43,7 @@ try {
 	} else {
 		serverSendAnswer(0, "You haven't changed anything");
 	}
-} catch(PDOException $error) { 
+} catch(PDOException $error) {
 	if (preg_match("/Duplicate entry .+ for key '(.+)'/", $error->getMessage(), $matches)) {
 		$arr_column_names = array(
 			"id" => "user ID",

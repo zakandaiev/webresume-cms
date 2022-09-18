@@ -46,7 +46,7 @@ document.addEventListener("focusout", event => {
 	const element = event.target;
 	if(element.hasAttribute("contenteditable") && element.hasAttribute("data-name")) {
 		let element_content = element.innerHTML;
-		
+
 		const replace_map = {amp: '&', lt: '<', gt: '>', quot: '"', '#039': "'"};
 		element_content = element_content.replace(/&([^;]+);/g, (m, c) => replace_map[c]);
 		element.innerHTML = element_content;
@@ -69,7 +69,7 @@ function sendData(element) {
 
 	const element_name = element.getAttribute("data-name");
 	let element_content = element.innerHTML;
-	
+
 	if(!element_name) {
 		return;
 	}
@@ -116,8 +116,8 @@ function sendData(element) {
 		}
 		table.querySelectorAll("tbody tr").forEach(item => {
 			const item_obj = {
-				url: item.querySelector(":nth-child(1)").innerHTML,
-				icon: item.querySelector(":nth-child(2)").innerHTML
+				url: item.querySelector(":nth-child(1)").textContent,
+				icon: item.querySelector(":nth-child(2)").textContent
 			}
 			element_content.push(item_obj);
 		});
@@ -140,7 +140,7 @@ function sendData(element) {
 		});
 		element_content = JSON.stringify(element_content);
 	}
-	
+
 	element.setAttribute("disabled", true);
 
 	let formData = new FormData();

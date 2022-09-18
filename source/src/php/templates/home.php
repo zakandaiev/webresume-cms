@@ -1,5 +1,5 @@
 <?php
-	$skills = json_decode($GLOBALS["section_skills"], true);
+	$skills = json_decode($GLOBALS["section_skills"] ?? '[]', true);
 
 	$portfolio_query = $pdo->query("SELECT * FROM {$prefix}_portfolio WHERE enabled is true ORDER BY cdate DESC LIMIT {$GLOBALS["site_pagination_limit"]};");
 	$portfolio = $portfolio_query->fetchAll(PDO::FETCH_ASSOC);
@@ -17,7 +17,7 @@
 		</div>
 	<?php endif; ?>
 	<?php
-		$section_timeline = json_decode($GLOBALS["section_timeline"], true);
+		$section_timeline = json_decode($GLOBALS["section_timeline"] ?? '[]', true);
 	?>
 	<?php if(!empty($section_timeline)): ?>
 		<div class="timeline <?php if($user["is_logged"]): ?>sortable<?php endif; ?>" <?php if($user["is_logged"]): ?>data-name="section_timeline"<?php endif; ?>>
@@ -51,7 +51,7 @@
 			<a class="btn primary" href="/<?=$GLOBALS['person_resume']?>" download="<?=$GLOBALS['site_name']?>">Download resume</a>
 		<?php endif; ?>
 		<?php if(!empty($portfolio)): ?>
-			<a class="btn" href="#portfolio">Explore my works</a>
+			<a class="btn" href="#portfolio">Explore works</a>
 		<?php endif; ?>
 	</footer>
 </section>
@@ -60,7 +60,7 @@
 	<section id="skills" class="section">
 		<h2 class="section__title">Skills</h2>
 		<?php
-			$section_skills = json_decode($GLOBALS["section_skills"], true);
+			$section_skills = $skills;
 		?>
 		<?php if($user["is_logged"]): ?>
 			<div class="table-top">
@@ -91,10 +91,19 @@
 	<section id="portfolio" class="section">
 		<h2 class="section__title">Portfolio</h2>
 		<?php if(!empty($portfolio)): ?>
+			<div class="pins">
+				<?php foreach($portfolio as $item): ?>
+					<?php if(!$item['pinned']) continue; ?>
+					<a class="pins__item" href="/portfolio/<?=$item['url']?>">
+						<?=getSvg("img/icons/pinned.svg")?>
+						<span><?=$item['title']?></span>
+					</a>
+				<?php endforeach; ?>
+			</div>
 			<div class="portfolio">
 				<?php foreach($portfolio as $item): ?>
 					<?php
-						$details = json_decode($item["details"], true);
+						$details = json_decode($item["details"] ?? '[]', true);
 					?>
 					<div class="portfolio__item">
 						<a class="portfolio__img" href="/portfolio/<?=$item['url']?>"><img src="/<?=getSmallUploadPath($item['main_image'])?>" alt="<?=$item['title']?>"></a>

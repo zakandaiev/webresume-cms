@@ -27,5 +27,12 @@ module.exports = {
 		interlaced: isProd,
 		progressive: isProd,
 		optimizationLevel: 5
+	},
+
+	terser: {
+		mangle: true,
+		keep_classnames: true,
+		keep_fnames: false,
+		ie8: false
 	}
 };

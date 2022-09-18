@@ -8,11 +8,11 @@ if(!$user["is_logged"] || !is_csrf_valid()) {
 
 $icon = null;
 if(isset($_POST["icon"]) && !empty($_POST["icon"])) {
-	$icon = filter_var(trim($_POST["icon"]), FILTER_SANITIZE_STRING);
+	$icon = trim($_POST["icon"]);
 }
 $url = null;
 if(isset($_POST["url"]) && !empty($_POST["url"])) {
-	$url = filter_var(trim($_POST["url"]), FILTER_SANITIZE_STRING);
+	$url = trim($_POST["url"]);
 }
 
 $socials = json_decode($GLOBALS["person_socials"], true);
@@ -29,6 +29,6 @@ $update_query->bindParam(":content", $socials);
 try {
 	$update_query->execute();
 	serverSendAnswer(1, "Social added");
-} catch(PDOException $error) { 
+} catch(PDOException $error) {
 	serverSendAnswer(0, $error->getMessage());
 }

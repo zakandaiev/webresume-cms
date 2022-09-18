@@ -4,7 +4,13 @@ const pathDest = "../";
 module.exports = {
 	root: pathDest,
 
-	clear: [pathDest + "**", "!" + pathDest + "source"],
+	clear: [
+		pathDest + "**",
+		"!" + pathDest + "source",
+		"!" + pathDest + ".gitignore",
+		"!" + pathDest + "LICENSE",
+		"!" + pathDest + "README.md"
+	],
 
 	php: {
 		src: pathSrc + "/php/**/*.{php,sql}",

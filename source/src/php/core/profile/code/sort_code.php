@@ -8,7 +8,7 @@ if(!$user["is_logged"] || !is_csrf_valid()) {
 
 $name = null;
 if(isset($_POST["name"]) && !empty($_POST["name"])) {
-	$name = filter_var(trim($_POST["name"]), FILTER_SANITIZE_STRING);
+	$name = trim($_POST["name"]);
 }
 $content = null;
 if(isset($_POST["content"]) && !empty($_POST["content"])) {
@@ -33,7 +33,7 @@ if(is_array($content) && !empty($content)) {
 		$update_query->bindParam(":order", $item["order"], PDO::PARAM_INT);
 		try {
 			$update_query->execute();
-		} catch(PDOException $error) { 
+		} catch(PDOException $error) {
 			serverSendAnswer(0, $error->getMessage());
 		}
 	}

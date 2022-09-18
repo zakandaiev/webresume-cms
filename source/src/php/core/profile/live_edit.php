@@ -8,7 +8,7 @@ if(!$user["is_logged"] || !is_csrf_valid()) {
 
 $name = null;
 if(isset($_POST["name"]) && !empty($_POST["name"])) {
-	$name = filter_var(trim($_POST["name"]), FILTER_SANITIZE_STRING);
+	$name = trim($_POST["name"]);
 }
 $content = null;
 if(isset($_POST["content"]) && !empty($_POST["content"])) {
@@ -30,6 +30,6 @@ $update_query->bindParam(":name", $name);
 try {
 	$update_query->execute();
 	serverSendAnswer(1, "Saved");
-} catch(PDOException $error) { 
+} catch(PDOException $error) {
 	serverSendAnswer(0, $error->getMessage());
 }

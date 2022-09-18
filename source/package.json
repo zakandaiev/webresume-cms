@@ -1,6 +1,6 @@
 {
 	"name": "webresume-cms",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "WebResume CMS",
 	"keywords": [
 		"webresume",
@@ -33,10 +33,10 @@
 	"author": "github.com/zakandaiev",
 	"license": "GNU v3.0",
 	"devDependencies": {
-		"@babel/core": "^7.16.12",
-		"@babel/preset-env": "^7.16.11",
-		"browser-sync": "^2.27.7",
-		"del": "^6.0.0",
+		"@babel/core": "^7.19.1",
+		"@babel/preset-env": "^7.19.1",
+		"browser-sync": "^2.27.10",
+		"del": "^6.1.1",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^8.0.0",
 		"gulp-babel": "^8.0.0",
@@ -45,15 +45,15 @@
 		"gulp-group-css-media-queries": "^1.2.2",
 		"gulp-htmlmin": "^5.0.1",
 		"gulp-imagemin": "^7.1.0",
-		"gulp-load-plugins": "^2.0.7",
+		"gulp-load-plugins": "^2.0.8",
 		"gulp-newer": "^1.4.0",
 		"gulp-sass": "^5.1.0",
-		"gulp-uglify": "^3.0.2",
-		"sass": "^1.49.0"
+		"gulp-terser": "^2.1.0",
+		"sass": "^1.54.9"
 	},
 	"dependencies": {
-		"@fancyapps/ui": "^4.0.20",
+		"@fancyapps/ui": "^4.0.31",
 		"reseter.css": "^2.0.0",
-		"sortablejs": "^1.14.0"
+		"sortablejs": "^1.15.0"
 	}
 }

@@ -26,18 +26,18 @@ if(isset($_GET["start_install"])) {
 
 <head>
 	<meta name="robots" content="noindex, nofollow">
-	
+
 	<title>Install - WebResume CMS</title>
 
 	<meta charset="utf-8">
 	<meta name="author" content="github.com/zakandaiev">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-	
+
 	<link rel="icon" href="/favicon.ico" sizes="any">
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-	
+
 	<link rel="stylesheet" href="/css/main.css">
 	<style>.header {background-image: url("/img/background/macbook.jpg");}</style>
 </head>
@@ -47,7 +47,7 @@ if(isset($_GET["start_install"])) {
 		<h1 class="header__title"><strong>WebResume CMS</strong><br><small>Install page</small></h1>
 	</header>
 	<main class="page-content">
-		
+
 			<?php if(isset($_GET["start_install"])): ?>
 				<section class="section">
 					<?php
@@ -72,31 +72,35 @@ if(isset($_GET["start_install"])) {
 							echo '<a href="/" class="btn primary">Try again</a>';
 							exit();
 						}
-						
+
 						// BEGIN INSTALL PROCESS
 						$sql_file = file_get_contents('core/install.sql');
 						$sql_query = explode(";", $sql_file);
 						foreach($sql_query as $sql_row) {
-							if (isset($sql_row) and !empty($sql_row)) {
-								$replace_from = [
-									"%db_host%", "%db_user%", "%db_pass%", "%db_name%", "%prefix%",
-									"%site_name%", "%person_email%",
-									"%admin_login%", "%admin_password%", "%admin_email%", "%login_hash%"
-								];
-								$replace_to = [
-									$_GET["db_host"], $_GET["db_user"], $_GET["db_pass"], $_GET["db_name"], $_GET["db_prefix"],
-									$_GET["site_name"], $_GET["person_email"],
-									$_GET["admin_login"], password_hash($_GET["admin_password"], PASSWORD_DEFAULT), $_GET["admin_email"], $login_hash
-								];
-								$sql_row_rep = str_replace($replace_from, $replace_to, $sql_row);
-								$sql_row_rep .= ';';
+							$sql_row = trim($sql_row ?? "");
 
-								// FOR DEBUG
-								// file_put_contents("install_debug.txt", $sql_row_rep . "\n", FILE_APPEND | LOCK_EX);
-
-								$query = $pdo->prepare($sql_row_rep);
-								$query->execute();
+							if(empty($sql_row)) {
+								continue;
 							}
+
+							$replace_from = [
+								"%db_host%", "%db_user%", "%db_pass%", "%db_name%", "%prefix%",
+								"%site_name%", "%person_email%",
+								"%admin_login%", "%admin_password%", "%admin_email%", "%login_hash%"
+							];
+							$replace_to = [
+								$_GET["db_host"], $_GET["db_user"], $_GET["db_pass"], $_GET["db_name"], $_GET["db_prefix"],
+								$_GET["site_name"], $_GET["person_email"],
+								$_GET["admin_login"], password_hash($_GET["admin_password"], PASSWORD_DEFAULT), $_GET["admin_email"], $login_hash
+							];
+							$sql_row_rep = str_replace($replace_from, $replace_to, $sql_row);
+							$sql_row_rep .= ';';
+
+							// FOR DEBUG
+							// file_put_contents("install_debug.txt", $sql_row_rep . "\n", FILE_APPEND | LOCK_EX);
+
+							$query = $pdo->prepare($sql_row_rep);
+							$query->execute();
 						}
 
 						$db_connect_file = '<?php'.PHP_EOL;

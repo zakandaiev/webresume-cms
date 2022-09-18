@@ -12,23 +12,23 @@ if(isset($_POST["page_id"]) && !empty($_POST["page_id"])) {
 }
 $title = null;
 if(isset($_POST["title"]) && !empty($_POST["title"])) {
-	$title = filter_var(trim($_POST["title"]), FILTER_SANITIZE_STRING);
+	$title = trim($_POST["title"]);
 }
 $url = null;
 if(isset($_POST["url"]) && !empty($_POST["url"])) {
-	$url = filter_var(trim($_POST["url"]), FILTER_SANITIZE_STRING);
+	$url = trim($_POST["url"]);
 }
 $template = null;
 if(isset($_POST["template"]) && !empty($_POST["template"])) {
-	$template = filter_var(trim($_POST["template"]), FILTER_SANITIZE_STRING);
+	$template = trim($_POST["template"]);
 }
 $seo_description = null;
 if(isset($_POST["seo_description"]) && !empty($_POST["seo_description"])) {
-	$seo_description = filter_var(trim($_POST["seo_description"]), FILTER_SANITIZE_STRING);
+	$seo_description = trim($_POST["seo_description"]);
 }
 $seo_keywords = null;
 if(isset($_POST["seo_keywords"]) && !empty($_POST["seo_keywords"])) {
-	$seo_keywords = filter_var(trim($_POST["seo_keywords"]), FILTER_SANITIZE_STRING);
+	$seo_keywords = trim($_POST["seo_keywords"]);
 }
 $seo_image = null;
 if(isset($_POST["seo_image"]) && !empty($_POST["seo_image"])) {
@@ -71,7 +71,7 @@ try {
 	$update_query->execute();
 	generateSitemapXml();
 	serverSendAnswer(1, "Saved");
-} catch(PDOException $error) { 
+} catch(PDOException $error) {
 	if (preg_match("/Duplicate entry .+ for key '(.+)'/", $error->getMessage(), $matches)) {
 		$arr_column_names = array(
 			"title" => "title",

@@ -6,9 +6,9 @@ if(!is_csrf_valid()) {
 	serverSendAnswer(0, "Access denied");
 }
 
-$name = filter_var(trim($_POST["name"]), FILTER_SANITIZE_STRING);
-$email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_STRING);
-$message = filter_var(trim($_POST["message"]), FILTER_SANITIZE_STRING);
+$name = trim($_POST["name"]);
+$email = trim($_POST["email"]);
+$message = trim($_POST["message"]);
 
 validateContactName($name);
 validateEmail($email);

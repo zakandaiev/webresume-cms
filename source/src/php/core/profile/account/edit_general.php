@@ -8,7 +8,7 @@ if(!$user["is_logged"] || !is_csrf_valid()) {
 
 $site_name = null;
 if(isset($_POST["site_name"]) && !empty($_POST["site_name"])) {
-	$site_name = filter_var(trim($_POST["site_name"]), FILTER_SANITIZE_STRING);
+	$site_name = trim($_POST["site_name"]);
 }
 $site_logo = null;
 if(isset($_POST["site_logo"]) && !empty($_POST["site_logo"])) {
@@ -20,15 +20,15 @@ if(isset($_POST["site_background"]) && !empty($_POST["site_background"])) {
 }
 $person_position = null;
 if(isset($_POST["person_position"]) && !empty($_POST["person_position"])) {
-	$person_position = filter_var(trim($_POST["person_position"]), FILTER_SANITIZE_STRING);
+	$person_position = trim($_POST["person_position"]);
 }
 $person_location = null;
 if(isset($_POST["person_location"]) && !empty($_POST["person_location"])) {
-	$person_location = filter_var(trim($_POST["person_location"]), FILTER_SANITIZE_STRING);
+	$person_location = trim($_POST["person_location"]);
 }
 $person_email = null;
 if(isset($_POST["person_email"]) && !empty($_POST["person_email"])) {
-	$person_email = filter_var(trim($_POST["person_email"]), FILTER_SANITIZE_STRING);
+	$person_email = trim($_POST["person_email"]);
 }
 $person_is_hireable = false;
 if (isset($_POST["person_is_hireable"]) && $_POST["person_is_hireable"] == "on") {
@@ -40,7 +40,7 @@ if(isset($_POST["person_resume"]) && !empty($_POST["person_resume"])) {
 }
 $site_analytics_gtag = null;
 if(isset($_POST["site_analytics_gtag"]) && !empty($_POST["site_analytics_gtag"])) {
-	$site_analytics_gtag = filter_var(trim($_POST["site_analytics_gtag"]), FILTER_SANITIZE_STRING);
+	$site_analytics_gtag = trim($_POST["site_analytics_gtag"]);
 }
 $site_pagination_limit = 4;
 if(isset($_POST["site_pagination_limit"]) && !empty($_POST["site_pagination_limit"])) {
@@ -75,6 +75,6 @@ $update_query->bindParam(":site_pagination_limit", $site_pagination_limit);
 try {
 	$update_query->execute();
 	serverSendAnswer(1, "Saved");
-} catch(PDOException $error) { 
+} catch(PDOException $error) {
 	serverSendAnswer(0, $error->getMessage());
 }

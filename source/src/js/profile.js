@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 				const replace_map = {amp: '&', lt: '<', gt: '>', quot: '"', '#039': "'"};
 				element_content = element_content.replace(/&([^;]+);/g, (m, c) => replace_map[c]);
-				
+
 				element.innerHTML = element_content;
 				textarea.value = element_content;
 			});

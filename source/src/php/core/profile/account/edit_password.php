@@ -8,11 +8,11 @@ if(!$user["is_logged"] || !is_csrf_valid()) {
 
 $password_current = null;
 if(isset($_POST["password_current"]) && !empty($_POST["password_current"])) {
-	$password_current = filter_var(trim($_POST["password_current"]), FILTER_SANITIZE_STRING);
+	$password_current = trim($_POST["password_current"]);
 }
 $password_new = null;
 if(isset($_POST["password_new"]) && !empty($_POST["password_new"])) {
-	$password_new = filter_var(trim($_POST["password_new"]), FILTER_SANITIZE_STRING);
+	$password_new = trim($_POST["password_new"]);
 }
 
 validatePassword($password_current);
@@ -48,6 +48,6 @@ try {
 	} else {
 		serverSendAnswer(0, "You haven't changed anything");
 	}
-} catch(PDOException $error) { 
+} catch(PDOException $error) {
 	serverSendAnswer(0, $error->getMessage());
 }

@@ -22,7 +22,7 @@
 		</label>
 		<label>Person resume</label>
 		<?=printFormFiles($GLOBALS["person_resume"])?>
-		<input type="file" data-type="resume" name="person_resume">
+		<input type="file" data-type="resume" name="person_resume" accept=".pdf,.doc,.docx">
 		<label>Google Analytics ID</label>
 		<input type="text" name="site_analytics_gtag" value="<?=$GLOBALS["site_analytics_gtag"]?>" placeholder="G-**********" minlength="2" maxlength="24">
 		<label>Pagination limit</label>
