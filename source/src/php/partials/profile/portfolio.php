@@ -101,6 +101,11 @@ $portfolio = $portfolio_query->fetchAll(PDO::FETCH_ASSOC);
 				<textarea name="seo_keywords" placeholder="SEO keywords" rows="1"><?=$edit_portfolio["seo_keywords"]?></textarea>
 				<label>Date of publication</label>
 				<input type="datetime-local" name="cdate" value="<?=formatDateString($edit_portfolio["cdate"], 'Y-m-d').'T'.formatDateString($edit_portfolio["cdate"], 'H:i:s')?>">
+				<label>Pinned</label>
+				<label class="switcher">
+					<input type="checkbox" name="pinned" <?php if($edit_portfolio["pinned"]): ?>checked<?php endif; ?>>
+					<span class="slider round"></span>
+				</label>
 				<label>Enabled</label>
 				<label class="switcher">
 					<input type="checkbox" name="enabled" <?php if($edit_portfolio["enabled"]): ?>checked<?php endif; ?>>

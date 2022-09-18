@@ -91,9 +91,12 @@
 	<section id="portfolio" class="section">
 		<h2 class="section__title">Portfolio</h2>
 		<?php if(!empty($portfolio)): ?>
+			<?php
+				$portfolio_pins_query = $pdo->query("SELECT url, title FROM {$prefix}_portfolio WHERE enabled is true AND pinned is true ORDER BY cdate DESC;");
+				$portfolio_pins = $portfolio_pins_query->fetchAll(PDO::FETCH_ASSOC);
+			?>
 			<div class="pins">
-				<?php foreach($portfolio as $item): ?>
-					<?php if(!$item['pinned']) continue; ?>
+				<?php foreach($portfolio_pins as $item): ?>
 					<a class="pins__item" href="/portfolio/<?=$item['url']?>">
 						<?=getSvg("img/icons/pinned.svg")?>
 						<span><?=$item['title']?></span>
