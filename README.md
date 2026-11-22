@@ -11,7 +11,7 @@ WebResume CMS is used to easily create your resume website.
 6. [Source code edit](#source-code-edit)
 
 ## Live demo
-* [zakandaiev.com](https://zakandaiev.com)
+* [zakandaiev.com](https://web.archive.org/web/20250315141158/https://zakandaiev.com/)
 
 ## Download
 * Download: [latest version v1.1.1](https://github.com/zakandaiev/webresume-cms/files/9593843/webresume-cms-v1.1.1.zip)
